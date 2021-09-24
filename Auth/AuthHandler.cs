@@ -40,7 +40,7 @@ namespace DuoEditor.Internal.Auth.Auth
       if (cachedUser == null)
       {
         var response = await _client.Introspection(new IntrospectionRequest(token));
-        if (response == null)
+        if (response?.User == null)
         {
           return AuthenticateResult.Fail("Unable to authenticate with provided credentials");
         }
